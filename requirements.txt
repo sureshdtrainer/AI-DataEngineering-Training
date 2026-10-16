@@ -1,0 +1,11 @@
+pandas
+numpy
+pyspark
+pyarrow
+pytest
+great-expectations
+dbt-core
+dbt-postgres
+psycopg2-binary
+python-dotenv
+PyYAML
