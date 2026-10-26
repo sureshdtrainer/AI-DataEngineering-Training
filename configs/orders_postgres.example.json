@@ -1,0 +1,33 @@
+{
+  "name": "orders",
+  "source": {
+    "type": "postgresql",
+    "host": "localhost",
+    "port": 5432,
+    "database": "sales",
+    "user": "ingest_reader",
+    "password_env": "ORDERS_PG_PASSWORD",
+    "sslmode": "require",
+    "schema": "public",
+    "table": "orders"
+  },
+  "columns": {
+    "order_id": "int",
+    "customer_id": "int",
+    "product_id": "int",
+    "order_date": "date",
+    "quantity": "int",
+    "unit_price": "amount",
+    "status": "text"
+  },
+  "key_column": "order_id",
+  "unique_key": false,
+  "load": {
+    "mode": "incremental",
+    "watermark_column": "order_date",
+    "state_file": "state/orders_postgres.json"
+  },
+  "output": {
+    "directory": "output/orders"
+  }
+}

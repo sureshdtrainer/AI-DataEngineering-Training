@@ -1,0 +1,25 @@
+{
+  "name": "orders",
+  "source": {
+    "type": "csv",
+    "path": "data/samples/orders.csv"
+  },
+  "columns": {
+    "order_id": "int",
+    "customer_id": "int",
+    "product_id": "int",
+    "order_date": "date",
+    "quantity": "int",
+    "unit_price": "amount",
+    "status": "text"
+  },
+  "key_column": "order_id",
+  "unique_key": false,
+  "load": {
+    "mode": "full"
+  },
+  "output": {
+    "directory": "output/orders",
+    "file_name": "orders_valid.csv"
+  }
+}
