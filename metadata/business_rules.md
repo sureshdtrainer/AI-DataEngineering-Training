@@ -1,10 +1,26 @@
-1. order_id uniquely identifies an order.
-2. Revenue is quantity multiplied by unit_price.
-3. Only orders with status COMPLETED contribute to revenue.
-4. CANCELLED and PENDING orders contribute zero revenue.
-5. Customer summaries retain every customer, including customers with no
-   completed orders.
-6. Discounts, taxes, refunds, and currency conversion are outside this
-   exercise's scope.
-7. The order-level model must return one row per order.
-8. The customer-level summary must return one row per customer.
+# Retail Business Rules
+
+## Revenue
+- Revenue = quantity * unit_price.
+- Only COMPLETED orders contribute to revenue.
+- CANCELLED and PENDING orders contribute zero revenue.
+- Discounts, taxes, refunds, and currency conversion are out of scope.
+
+## Customer reporting
+- Customer summary must include all customers.
+- Customers with no completed orders must have zero completed orders
+  and zero completed revenue.
+- Completed order count includes only COMPLETED orders.
+
+## Data quality
+- order_id must be unique.
+- customer_id and product_id must be populated.
+- Customer and product references must be valid.
+- quantity must be greater than zero.
+- unit_price must be non-negative.
+- Invalid records must be reported rather than silently discarded.
+
+## Modeling
+- Identifiers are represented as strings.
+- Order-level output has one row per order.
+- Customer-level output has one row per customer.

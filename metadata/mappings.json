@@ -1,0 +1,48 @@
+{
+  "target": "customer_revenue",
+  "description": "Customer-level sales summary",
+  "grain": "One row per customer",
+  "sources": [
+    "customers",
+    "orders"
+  ],
+  "join": {
+    "type": "LEFT JOIN",
+    "left": "customers.customer_id",
+    "right": "orders.customer_id",
+    "purpose": "Retain customers with no orders"
+  },
+  "fields": {
+    "customer_id": {
+      "source": "customers.customer_id",
+      "transformation": "direct"
+    },
+    "customer_name": {
+      "source": "customers.customer_name",
+      "transformation": "direct"
+    },
+    "region": {
+      "source": "customers.region",
+      "transformation": "direct"
+    },
+    "completed_order_count": {
+      "source": "orders.order_id",
+      "transformation": "Count orders where status = COMPLETED",
+      "empty_value": 0
+    },
+    "completed_revenue": {
+      "source": [
+        "orders.quantity",
+        "orders.unit_price",
+        "orders.status"
+      ],
+      "transformation": "Sum quantity * unit_price for COMPLETED orders",
+      "empty_value": 0
+    }
+  },
+  "assumptions": [
+    "Each order represents one order line.",
+    "No discounts, taxes, refunds, or currency conversion.",
+    "All source identifiers are treated as strings."
+  ]
+}

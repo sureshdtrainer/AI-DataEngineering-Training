@@ -1,0 +1,96 @@
+{
+  "customers": {
+    "description": "Retail customer master data",
+    "source": "data/samples/customers.csv",
+    "grain": "One row per customer",
+    "primary_key": ["customer_id"],
+    "columns": {
+      "customer_id": {
+        "type": "string",
+        "nullable": false,
+        "description": "Unique customer identifier"
+      },
+      "customer_name": {
+        "type": "string",
+        "nullable": false,
+        "description": "Customer display name"
+      },
+      "region": {
+        "type": "string",
+        "nullable": false,
+        "description": "Customer's sales region"
+      },
+      "signup_date": {
+        "type": "date",
+        "nullable": false,
+        "description": "Date the customer registered"
+      }
+    }
+  },
+  "products": {
+    "description": "Retail product master data",
+    "source": "data/samples/products.csv",
+    "grain": "One row per product",
+    "primary_key": ["product_id"],
+    "columns": {
+      "product_id": {
+        "type": "string",
+        "nullable": false,
+        "description": "Unique product identifier"
+      },
+      "product_name": {
+        "type": "string",
+        "nullable": false,
+        "description": "Product display name"
+      },
+      "category": {
+        "type": "string",
+        "nullable": false,
+        "description": "Product category"
+      }
+    }
+  },
+  "orders": {
+    "description": "Retail order line data",
+    "source": "data/samples/orders.csv",
+    "grain": "One row per order",
+    "primary_key": ["order_id"],
+    "columns": {
+      "order_id": {
+        "type": "string",
+        "nullable": false,
+        "description": "Unique order identifier"
+      },
+      "customer_id": {
+        "type": "string",
+        "nullable": false,
+        "description": "Customer who placed the order"
+      },
+      "product_id": {
+        "type": "string",
+        "nullable": false,
+        "description": "Product included in the order"
+      },
+      "order_date": {
+        "type": "date",
+        "nullable": false,
+        "description": "Date the order was placed"
+      },
+      "quantity": {
+        "type": "integer",
+        "nullable": false,
+        "description": "Number of units ordered"
+      },
+      "unit_price": {
+        "type": "decimal",
+        "nullable": false,
+        "description": "Price per unit"
+      },
+      "status": {
+        "type": "string",
+        "nullable": false,
+        "description": "Order processing status"
+      }
+    }
+  }
+}

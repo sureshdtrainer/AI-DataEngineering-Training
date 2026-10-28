@@ -1,0 +1,50 @@
+{
+  "dataset": "customer_revenue",
+  "grain": "One row per customer",
+  "upstream_datasets": [
+    "customers",
+    "orders"
+  ],
+  "transformations": [
+    {
+      "name": "join_customer_orders",
+      "inputs": [
+        "customers.customer_id",
+        "orders.customer_id"
+      ],
+      "output": "customer_order_records",
+      "logic": "LEFT JOIN on customer_id"
+    },
+    {
+      "name": "completed_order_count",
+      "inputs": [
+        "orders.order_id",
+        "orders.status"
+      ],
+      "output": "customer_revenue.completed_order_count",
+      "logic": "Count only COMPLETED orders"
+    },
+    {
+      "name": "completed_revenue",
+      "inputs": [
+        "orders.quantity",
+        "orders.unit_price",
+        "orders.status"
+      ],
+      "output": "customer_revenue.completed_revenue",
+      "logic": "Sum quantity * unit_price where status = COMPLETED"
+    },
+    {
+      "name": "customer_region",
+      "inputs": [
+        "customers.region"
+      ],
+      "output": "customer_revenue.region",
+      "logic": "Direct mapping"
+    }
+  ],
+  "downstream_consumers": [
+    "monthly_sales_reporting",
+    "regional_performance_reporting"
+  ]
+}
