@@ -1,0 +1,5 @@
+source_row_number,order_id,customer_id,product_id,order_date,quantity,unit_price,status,rejection_reason
+4,1002,502,2002,2025-05-02,1,175.5,COMPLETED,
+5,1003,501,2003,2025-05-03,1,99.0,COMPLETED,
+6,1004,503,2001,2025-05-04,2,80.0,CANCELLED,
+7,1005,501,2002,2025-05-05,1,50.0,COMPLETED,
