@@ -1,0 +1,40 @@
+{
+  "dag_id": "retail_customer_analytics",
+  "ds": "2026-10-30",
+  "input_file": "/opt/airflow/project/output/retail_customer_analytics/transformed/ds=2026-10-30/orders_revenue.csv",
+  "row_count": 5,
+  "status": "PASSED",
+  "checks": {
+    "output_not_empty": {
+      "passed": true,
+      "issue_count": 0,
+      "examples": []
+    },
+    "required_fields_present": {
+      "passed": true,
+      "issue_count": 0,
+      "examples": []
+    },
+    "order_id_unique": {
+      "passed": true,
+      "issue_count": 0,
+      "examples": []
+    },
+    "quantity_positive": {
+      "passed": true,
+      "issue_count": 0,
+      "examples": []
+    },
+    "unit_price_non_negative": {
+      "passed": true,
+      "issue_count": 0,
+      "examples": []
+    },
+    "status_valid": {
+      "passed": true,
+      "issue_count": 0,
+      "examples": []
+    }
+  },
+  "validated_at": "2026-10-30T03:07:07.421532+00:00"
+}
